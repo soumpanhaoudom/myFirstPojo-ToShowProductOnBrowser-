@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<meta charset="UTF-8"/>
+<title>All Student</title>
+<link rel="stylesheet" href="/studentStyle.css"/>
+</head>
+<body>
+
+	<div id="chooseLang">
+		<span th:text="#{lang.change}"></span>:
+		
+		<select id="locales">
+		    <option value=""></option>
+		    <option value="en" th:text="#{lang.eng}"></option>
+		    <option value="kh" th:text="#{lang.kh}"></option>
+		</select>
+		</div>
+	<div id="addStudent">
+		<a  href="/student/add" th:text="#{Addstudent}">Add student</a>
+	</div>
+	<table>
+		<tr>
+			<th th:text = "#{ID}"> ID</th>
+			<th th:text = "#{Fullname}">FullName</th>
+			<th th:text = "#{Address}">Address</th>
+			<th th:text = "#{Photo}">Photo</th>
+			<th th:text = "#{Other}">Other</th>
+		</tr>
+		
+		<tr th:each = "student : ${student}" th:object = "${student}">
+			<td th:text = "*{id}"></td>
+			<td th:text = "*{title}"></td>
+			<td th:text = "*{description}"></td>
+			<td>
+				<img alt="" src="http://1.bp.blogspot.com/_iXKdV2ipGNM/TPerglWZt3I/AAAAAAAAC_M/kgXiguUBLQI/s1600/n11775264173_1351581_6996206.jpg"/>
+			</td>
+			<td>
+				<a href="#" th:href="@{/student/view/(id=*{id})}"  th:text = "#{View}" >View</a> <br></br>
+				<a href = "#" th:href="@{/student/remove/{id}(id=*{id})}"  th:text = "#{Remove}">remove</a> <br></br>
+				<a href = "#" th:href="@{/student/edit/{id}(id=*{id})}"  th:text = "#{Edit}">edit</a>
+			</td>
+		</tr>
+	</table>
+</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+	</script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+	    $("#locales").change(function () {
+	        var selectedOption = $('#locales').val();
+	        if (selectedOption != ''){
+	            window.location.replace('student?lang=' + selectedOption);
+	        }
+	    });
+	});
+	</script>
+</html>
+

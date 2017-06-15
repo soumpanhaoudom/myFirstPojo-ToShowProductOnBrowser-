@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>All Student</title>
+<link rel="stylesheet" href="/studentStyle.css"/>
+</head>
+<body>
+	<h1>Add Student</h1>
+	 <form th:action="@{/student/save}" th:object="${student}" method="POST">
+		<input type="text" th:field = "*{id}"  /> <br></br>
+		
+		<input type="text" th:field = "*{title}" /> <br></br>
+		
+		<input type="text" th:field = "*{description}" /> <br></br>
+		<p th:if="${#fields.hasErrors('description')}"  th:errors="*{description}">description Error</p>
+		<input type="submit" value="SAVE"/>
+	</form>
+	 
+	 	
+</body>
+</html>

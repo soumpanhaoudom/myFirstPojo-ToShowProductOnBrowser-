@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>All Student</title>
+<link rel="stylesheet" href="/studentStyle.css"/>
+</head>
+<body>
+	<h1>update Student</h1>
+
+	<form th:action="@{/student/update}" th:object="${student}" method="POST">
+		<input type="text" th:field = "*{id}" />
+		<input type="text" th:field = "*{title}" />
+		<input type="text" th:field = "*{description}" />
+		
+		<input type="submit" value="SAVE"/>
+	</form>
+	
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>viewpage</title>
+<link rel="stylesheet" href="/studentStyle.css"/>
+</head>
+<body>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>FullName</th>
+			<th>Address</th>
+			<th>Photo</th>
+			<th>Other</th>
+		</tr>
+		
+		<tr th:object = "${student}">
+			<td th:text = "*{id}"></td>
+			<td th:text = "*{title}"></td>
+			<td th:text = "*{description}"></td>
+			<td>
+				<img alt="" src="http://1.bp.blogspot.com/_iXKdV2ipGNM/TPerglWZt3I/AAAAAAAAC_M/kgXiguUBLQI/s1600/n11775264173_1351581_6996206.jpg"/>
+			</td>
+			<td>
+				<a href="#" th:href="@{/student/view/(id=*{id})}">View</a> <br></br>
+				<a href = "#" th:href="@{/student/remove/{id}(id=*{id})}">remove</a>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
